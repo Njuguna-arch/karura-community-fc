@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Joseph Njuguna">
+  <meta name="about" content="A Football club in the FKF Central Region League">
+  <title>Karura Community FC | Central Regional League</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .donate-section {
+      background: var(--surface);
+      border: 1px solid rgba(0,166,81,0.18);
+      border-radius: 14px;
+      padding: 2.2rem 2rem;
+      margin-top: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .donate-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--green));
+    }
+    .donate-section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .donate-left {}
+    .donate-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .donate-title span { color: var(--green); }
+    .donate-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+    .donate-love-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+    .donate-love-list li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .donate-love-list li span.dlv {
+      width: 18px; height: 18px;
+      background: rgba(0,166,81,0.15);
+      border: 1px solid rgba(0,166,81,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; flex-shrink: 0; color: var(--green);
+    }
+    .donate-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .paybill-card {
+      background: linear-gradient(135deg, rgba(0,166,81,0.12) 0%, rgba(245,196,0,0.06) 100%);
+      border: 1px solid rgba(0,166,81,0.25);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      width: 100%;
+      max-width: 320px;
+      position: relative;
+    }
+    .paybill-card::after {
+      content: '⚽';
+      position: absolute;
+      top: -14px; right: 16px;
+      font-size: 1.6rem;
+      opacity: 0.35;
+    }
+    .paybill-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.6rem;
+    }
+    .paybill-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      color: var(--white);
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+    .paybill-divider {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0.8rem auto;
+    }
+    .paybill-account-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .paybill-account-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+    .paybill-name {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .paybill-steps {
+      margin-top: 1.5rem;
+      text-align: left;
+      width: 100%;
+      max-width: 320px;
+    }
+    .paybill-steps-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .paybill-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .paybill-step-num {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(0,166,81,0.15); border: 1px solid rgba(0,166,81,0.25);
+      color: var(--green); font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .donate-thank {
+      margin-top: 1.2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(122,154,122,0.6);
+      font-style: italic;
+      font-family: 'Barlow', sans-serif;
+    }
+    .donate-thank strong { color: var(--green); font-style: normal; }
+
+    .sponsor-cta {
+      padding: 0 !important;
+      background: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      max-width: 100% !important;
+      margin-top: 2.5rem;
+    }
+    .sponsor-cta-title {
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: 2rem !important;
+      color: var(--white) !important;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem !important;
+    }
+    .sponsor-cta-text {
+      font-size: 0.9rem !important;
+      color: var(--muted) !important;
+      line-height: 1.7 !important;
+      margin-bottom: 2rem !important;
+      max-width: 600px;
+    }
+    .sponsor-cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .sponsor-cta-box {
+      background: var(--surface);
+      border: 1px solid rgba(0,166,81,0.15);
+      border-radius: 12px;
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .sponsor-cta-box:hover {
+      border-color: rgba(0,166,81,0.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .sponsor-cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+    }
+    .sponsor-cta-box.why::before { background: linear-gradient(90deg, var(--green), transparent); }
+    .sponsor-cta-box.benefits::before { background: linear-gradient(90deg, var(--gold), transparent); }
+    .sponsor-cta-box-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .sponsor-cta-box-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .sponsor-cta-box.why .sponsor-cta-box-title { color: var(--green); }
+    .sponsor-cta-box.benefits .sponsor-cta-box-title { color: var(--gold); }
+    .sponsor-cta-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .sponsor-cta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .sponsor-cta-item-icon {
+      width: 24px; height: 24px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0; margin-top: 1px;
+    }
+    .why .sponsor-cta-item-icon {
+      background: rgba(0,166,81,0.12);
+      border: 1px solid rgba(0,166,81,0.2);
+    }
+    .benefits .sponsor-cta-item-icon {
+      background: rgba(245,196,0,0.1);
+      border: 1px solid rgba(245,196,0,0.2);
+    }
+    .sponsor-cta-item strong { color: var(--text); }
+    .sponsor-cta-action {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .sponsor-cta-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .sponsor-cta-note a { color: var(--green); text-decoration: none; }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .player-card {
+      background: var(--surface);
+      border: 1px solid rgba(245,196,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .player-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,166,81,0.35);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+    }
+    .player-img {
+      width: 100%; height: 180px;
+      position: relative; overflow: hidden; background: var(--surface2);
+    }
+    .player-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center; display: block;
+    }
+    .player-photo-fallback {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      background: linear-gradient(160deg, var(--surface2), var(--mid));
+      opacity: 0;
+    }
+    .player-photo.error + .player-photo-fallback,
+    .player-photo[src=""] + .player-photo-fallback { opacity: 1; }
+    .player-photo.error { opacity: 0; }
+    .photo-fallback-icon { font-size: 2rem; opacity: 0.3; }
+    .photo-fallback-name {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+    }
+    .p-pos-badge {
+      position: absolute; top: 8px; left: 8px; z-index: 2;
+      background: rgba(0,166,81,0.92); color: white;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 3px;
+    }
+    .p-num-badge { display: none; }
+    .player-info { padding: 0.6rem 0.7rem 0.75rem; }
+    .p-name {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.88rem; color: var(--white); letter-spacing: 0.3px;
+    }
+    .p-pos-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.66rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--green); margin-top: 2px;
+    }
+    .p-detail, .p-stats { display: none; }
+
+    .position-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+    .position-header:first-child { margin-top: 0; }
+    .position-header-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: var(--muted);
+    }
+    .position-header-line {
+      flex: 1; height: 1px;
+      background: rgba(0,166,81,0.1);
+    }
+
+    .filter-tabs { display: none; }
+
+    @media (max-width: 600px) {
+      .donate-section-inner { grid-template-columns: 1fr; }
+      .sponsor-cta-grid { grid-template-columns: 1fr; }
+      .players-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+    }
+    @media (max-width: 380px) {
+      .players-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-img-wrap">
+      <img src="assets/logo.png" alt="Karura Community FC Crest" class="nav-logo-img">
+      <div class="nav-logo-fallback">KCFC</div>
+    </div>
+    <div>
+      <div class="nav-name"><span>KARURA COMMUNITY</span> FC</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#league">League</a></li>
+    <li><a href="#players">Players</a></li>
+    <li><a href="#legends">Legends</a></li>
+    <li><a href="#coaching">Coaching</a></li>
+    <li><a href="#directors">Directors</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Toggle navigation menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#league"    onclick="toggleMenu()">League Table</a>
+  <a href="#players"   onclick="toggleMenu()">Players</a>
+  <a href="#legends"   onclick="toggleMenu()">Legends</a>
+  <a href="#coaching"  onclick="toggleMenu()">Coaching Staff</a>
+  <a href="#directors" onclick="toggleMenu()">Directors</a>
+  <a href="#history"   onclick="toggleMenu()">History</a>
+  <a href="#sponsors"  onclick="toggleMenu()">Sponsors</a>
+  <a href="#contact"   onclick="toggleMenu()">Contact</a>
+</div>
+
+<section id="hero" class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">
+        <span class="dot-live"></span>
+        FKF Central Regional League — 2025/26
+      </div>
+      <h1 class="hero-title">
+        KARURA<br>
+        <span class="text-green">COMMUNITY</span><br>
+        <span class="text-gold">FC</span>
+      </h1>
+      <p class="hero-sub">Born from the community of Kiambaa, Kiambu. A ball and a life — we don't just play football, we build futures.</p>
+      <div class="hero-btns">
+        <a href="#players" class="btn-primary">Meet the Squad</a>
+        <a href="#history" class="btn-outline">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="carousel-outer">
+        <div class="carousel-wrap" id="heroCarousel">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel00.png" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Historic moment</div><div class="slide-name">Manzur Okwaro visit</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel02.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Ruthless Defender</div><div class="slide-name">Benard Kiono</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel3.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Team</div><div class="slide-name">Before Match Caption</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel04.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Midfielder</div><div class="slide-name">Vincent Lubisia</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel05.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Unity</div><div class="slide-name">Before Match start</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel6.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Friendship</div><div class="slide-name">Discipline</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel07.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Captain in action</div><div class="slide-name">Vincent Lubisia</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel08.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Foul</div><div class="slide-name">Match Action</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel09.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Goalkeeper serving the ball</div><div class="slide-name">Alvin Paul</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel10.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Bench squad</div><div class="slide-name">Super subs</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel11.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Fans</div><div class="slide-name">Diehard Supporters</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel12.jpeg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Captain</div><div class="slide-name">Vincent Lubisia</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel13.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Peter Wambugu</div><div class="slide-name">Half Time talks</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel14.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Warm up</div><div class="slide-name">Karanja Samuel</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel15.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Team Photo</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Team warm-up</div><div class="slide-name">Squad 2025/26</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel16.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Match Action</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Before Match</div><div class="slide-name">Warm-up</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel17.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Training</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Second Half</div><div class="slide-name">Team warm-up</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel18.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Celebration</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Training</div><div class="slide-name">Karura Community FC</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel19.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Community</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Cool-down</div><div class="slide-name">After Match action</div></div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-img-wrap"><img src="assets/carousel20.jpg" alt="Karura FC" class="slide-img"><div class="slide-img-fallback"><span class="slide-fallback-icon">📷</span><span class="slide-fallback-text">Youth Academy</span></div></div>
+              <div class="slide-overlay"><div class="slide-pos">Celebration</div><div class="slide-name">Victory</div></div>
+            </div>
+          </div>
+          <div class="carousel-arrows">
+            <button class="carr" onclick="prevSlide()" aria-label="Previous slide">&#8592;</button>
+            <button class="carr" onclick="nextSlide()" aria-label="Next slide">&#8594;</button>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots">
+          <button class="cdot active" onclick="goSlide(0)"></button><button class="cdot" onclick="goSlide(1)"></button>
+          <button class="cdot" onclick="goSlide(2)"></button><button class="cdot" onclick="goSlide(3)"></button>
+          <button class="cdot" onclick="goSlide(4)"></button><button class="cdot" onclick="goSlide(5)"></button>
+          <button class="cdot" onclick="goSlide(6)"></button><button class="cdot" onclick="goSlide(7)"></button>
+          <button class="cdot" onclick="goSlide(8)"></button><button class="cdot" onclick="goSlide(9)"></button>
+          <button class="cdot" onclick="goSlide(10)"></button><button class="cdot" onclick="goSlide(11)"></button>
+          <button class="cdot" onclick="goSlide(12)"></button><button class="cdot" onclick="goSlide(13)"></button>
+          <button class="cdot" onclick="goSlide(14)"></button><button class="cdot" onclick="goSlide(15)"></button>
+          <button class="cdot" onclick="goSlide(16)"></button><button class="cdot" onclick="goSlide(17)"></button>
+          <button class="cdot" onclick="goSlide(18)"></button><button class="cdot" onclick="goSlide(19)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-wrap">
+    <div class="stats-bar reveal">
+      <div class="stat-box"><div class="stat-num">20</div><div class="stat-lbl">Squad Size</div></div>
+      <div class="stat-box"><div class="stat-num">4th</div><div class="stat-lbl">League Position</div></div>
+      <div class="stat-box"><div class="stat-num">12</div><div class="stat-lbl">Matches Played</div></div>
+      <div class="stat-box"><div class="stat-num">20</div><div class="stat-lbl">Goals Scored</div></div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<section id="league">
+  <div class="section-label reveal">Current Competition</div>
+  <div class="section-title reveal">Central Regional<br>League 2025/26</div>
+  <div class="league-banner reveal">
+    <div>
+      <div class="league-name-big">Central Regional League</div>
+      <div class="league-season">Season 2025/26 &nbsp;·&nbsp; Zone B &nbsp;·&nbsp; Kenya</div>
+    </div>
+    <div class="league-badge">Active Season</div>
+  </div>
+  <div class="table-scroll reveal">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Club</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Form</th><th>Pts</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-pos">1</td><td class="td-club">Superoots FC</td><td>11</td><td>10</td><td>0</td><td>1</td><td>31</td><td>7</td><td>+24</td><td><span class="form-dot form-w">W</span><span class="form-dot form-w">W</span><span class="form-dot form-d">D</span><span class="form-dot form-w">W</span><span class="form-dot form-w">W</span></td><td class="td-pts">30</td></tr>
+        <tr><td class="td-pos">2</td><td class="td-club">Muwasco FC</td><td>12</td><td>7</td><td>1</td><td>4</td><td>25</td><td>11</td><td>+14</td><td><span class="form-dot form-w">W</span><span class="form-dot form-d">D</span><span class="form-dot form-w">W</span><span class="form-dot form-w">W</span><span class="form-dot form-d">D</span></td><td class="td-pts">22</td></tr>
+        <tr><td class="td-pos">3</td><td class="td-club">Watuka Lilac FC</td><td>11</td><td>6</td><td>2</td><td>3</td><td>21</td><td>20</td><td>+1</td><td><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-d">D</span><span class="form-dot form-w">W</span></td><td class="td-pts">20</td></tr>
+        <tr class="highlight"><td class="td-pos">4</td><td class="td-club">⚽ Karura Community FC</td><td>12</td><td>5</td><td>3</td><td>4</td><td>20</td><td>13</td><td>+7</td><td><span class="form-dot form-w">W</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span><span class="form-dot form-d">D</span><span class="form-dot form-w">W</span></td><td class="td-pts">18</td></tr>
+        <tr><td class="td-pos">5</td><td class="td-club">Mega Stars FC</td><td>12</td><td>6</td><td>0</td><td>6</td><td>18</td><td>15</td><td>+3</td><td><span class="form-dot form-d">D</span><span class="form-dot form-d">D</span><span class="form-dot form-w">W</span><span class="form-dot form-w">W</span><span class="form-dot form-d">D</span></td><td class="td-pts">18</td></tr>
+        <tr><td class="td-pos">6</td><td class="td-club">Tingángá Black Wolves FC</td><td>11</td><td>6</td><td>0</td><td>5</td><td>15</td><td>23</td><td>-8</td><td><span class="form-dot form-d">D</span><span class="form-dot form-w">W</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span></td><td class="td-pts">18</td></tr>
+        <tr><td class="td-pos">7</td><td class="td-club">Thika Santer FC</td><td>11</td><td>3</td><td>5</td><td>3</td><td>17</td><td>16</td><td>+1</td><td><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-d">D</span></td><td class="td-pts">16</td></tr>
+        <tr><td class="td-pos">8</td><td class="td-club">Romeo FC</td><td>10</td><td>4</td><td>3</td><td>3</td><td>8</td><td>12</td><td>-4</td><td><span class="form-dot form-l">L</span><span class="form-dot form-d">D</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span></td><td class="td-pts">15</td></tr>
+        <tr><td class="td-pos">9</td><td class="td-club">Shofco Nyeri FC</td><td>9</td><td>3</td><td>2</td><td>4</td><td>9</td><td>11</td><td>-2</td><td><span class="form-dot form-l">L</span><span class="form-dot form-d">D</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span></td><td class="td-pts">11</td></tr>
+        <tr><td class="td-pos">10</td><td class="td-club">Kubali FC</td><td>8</td><td>2</td><td>2</td><td>4</td><td>10</td><td>12</td><td>-2</td><td><span class="form-dot form-l">L</span><span class="form-dot form-d">D</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span></td><td class="td-pts">8</td></tr>
+        <tr><td class="td-pos">11</td><td class="td-club">AMG Nanyuki FC</td><td>11</td><td>2</td><td>1</td><td>8</td><td>7</td><td>23</td><td>-16</td><td><span class="form-dot form-l">L</span><span class="form-dot form-d">D</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span></td><td class="td-pts">7</td></tr>
+        <tr><td class="td-pos">12</td><td class="td-club">Kabuku Sundowns</td><td>10</td><td>0</td><td>1</td><td>9</td><td>3</td><td>23</td><td>-20</td><td><span class="form-dot form-l">L</span><span class="form-dot form-d">D</span><span class="form-dot form-l">L</span><span class="form-dot form-w">W</span><span class="form-dot form-l">L</span></td><td class="td-pts">1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<hr class="section-divider">
+
+<div class="bg-strip">
+<section id="players">
+  <div class="section-label reveal">First Team Squad</div>
+  <div class="section-title reveal">Player Profiles</div>
+  <div class="filter-tabs reveal"><!-- hidden via CSS --></div>
+  <div class="players-grid" id="playersGrid">
+
+    <div class="position-header">
+      <span class="position-header-label">Goalkeepers</span>
+      <span class="position-header-line"></span>
+    </div>
+
+    <div class="player-card" data-pos="GK">
+      <div class="player-img">
+        <img src="assets/Njoroge.jpeg" alt="Peter Njoroge" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Peter Njoroge</span></div>
+        <div class="p-pos-badge">GK</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Peter Njoroge C</div>
+        <div class="p-pos-label">Goalkeeper</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="GK">
+      <div class="player-img">
+        <img src="assets/Alvin Paul.jpeg" alt="Alvin Paul Wabwire" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Alvin Paul Wabwire</span></div>
+        <div class="p-pos-badge">GK</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Alvin Paul Wabwire</div>
+        <div class="p-pos-label">Goalkeeper</div>
+      </div>
+    </div>
+
+    <div class="position-header">
+      <span class="position-header-label">Defenders</span>
+      <span class="position-header-line"></span>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/Benard.jpeg" alt="Benard Kiono" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Benard Kiono</span></div>
+        <div class="p-pos-badge">CB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Benard Kiono</div>
+        <div class="p-pos-label">Centre Back</div>
+      </div>
+    </div>
+
+        <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/Awiti.jpg" alt="awiti" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Awiti</span></div>
+        <div class="p-pos-badge">CB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Awiti</div>
+        <div class="p-pos-label">Centre Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/" alt="Victor Mwaura" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Victor Mwaura</span></div>
+        <div class="p-pos-badge">RB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Victor Mwaura</div>
+        <div class="p-pos-label">Right Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/Waiganjo.jpeg" alt="Samuel Waiganjo" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Samuel Waiganjo</span></div>
+        <div class="p-pos-badge">CB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Samuel Waiganjo</div>
+        <div class="p-pos-label">Centre Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/John.jpeg" alt="John Maina" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">John Maina</span></div>
+        <div class="p-pos-badge">RB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">John Maina</div>
+        <div class="p-pos-label">Right Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/Ndegwa.jpg" alt="Samuel Ndegwa" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Samuel Ndegwa</span></div>
+        <div class="p-pos-badge">CB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Samuel Ndegwa</div>
+        <div class="p-pos-label">Centre Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/Andy.jpeg" alt="Andy Omondi" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Andy Omondi</span></div>
+        <div class="p-pos-badge">LB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Andy Omondi</div>
+        <div class="p-pos-label">Left Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/John W.jpeg" alt="John Wangui" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">John Wangui</span></div>
+        <div class="p-pos-badge">CB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">John Wangui</div>
+        <div class="p-pos-label">Centre Back</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="DEF">
+      <div class="player-img">
+        <img src="assets/" alt="Victor Muleshi" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Victor Muleshe</span></div>
+        <div class="p-pos-badge">CB</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Victor Muleshe</div>
+        <div class="p-pos-label">Centre Back</div>
+      </div>
+    </div>
+
+    <div class="position-header">
+      <span class="position-header-label">Midfielders</span>
+      <span class="position-header-line"></span>
+    </div>
+
+    <div class="player-card" data-pos="MID">
+      <div class="player-img">
+        <img src="assets/Mathias.jpeg" alt="Mathiang Mayang" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Mathiang Mayang</span></div>
+        <div class="p-pos-badge">CM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Mathiang Mayang</div>
+        <div class="p-pos-label">Central Mid</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="MID">
+      <div class="player-img">
+        <img src="assets/karanja.jpeg" alt="Samuel Karanja" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Samuel Karanja</span></div>
+        <div class="p-pos-badge">CM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Samuel Karanja</div>
+        <div class="p-pos-label">Central Mid</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="MID">
+      <div class="player-img">
+        <img src="assets/Vincent-C.jpeg" alt="Vincent Lubisia" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Vincent Lubisia</span></div>
+        <div class="p-pos-badge">AM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Vincent Lubisia ©</div>
+        <div class="p-pos-label">Attacking Mid</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="MID">
+      <div class="player-img">
+        <img src="assets/kariri.jpg" alt="Peter Kariri" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Peter Kariri</span></div>
+        <div class="p-pos-badge">CM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Peter Kariri</div>
+        <div class="p-pos-label">Central Mid</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="MID">
+      <div class="player-img">
+        <img src="assets/Solomon.jpeg" alt="Solomon Kimani" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Solomon Kimani</span></div>
+        <div class="p-pos-badge">AM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Solomon Kimani</div>
+        <div class="p-pos-label">Attacking Mid</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="MID">
+      <div class="player-img">
+        <img src="assets/Benedetto.jpg" alt="Benedetto Maina" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Benedetto Maina</span></div>
+        <div class="p-pos-badge">CM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Benedetto Maina</div>
+        <div class="p-pos-label">Central Mid</div>
+      </div>
+    </div>
+
+    <div class="position-header">
+      <span class="position-header-label">Forwards</span>
+      <span class="position-header-line"></span>
+    </div>
+
+    <div class="player-card" data-pos="FWD">
+      <div class="player-img">
+        <img src="assets/Tyrone.jpeg" alt="Daniel Tyrone" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Daniel Tyrone</span></div>
+        <div class="p-pos-badge">ST</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Daniel Tyrone</div>
+        <div class="p-pos-label">Striker</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="FWD">
+      <div class="player-img">
+        <img src="assets/Nelson.jpeg" alt="Omondi Nelson" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Omondi Nelson</span></div>
+        <div class="p-pos-badge">LW</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Omondi Nelson</div>
+        <div class="p-pos-label">Left Wing</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="FWD">
+      <div class="player-img">
+        <img src="assets/Martin" alt="Martin Ndegwa" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Martin Ndegwa</span></div>
+        <div class="p-pos-badge">RW</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Martin Ndegwa</div>
+        <div class="p-pos-label">Right Wing</div>
+      </div>
+    </div>
+
+    <div class="player-card" data-pos="FWD">
+      <div class="player-img">
+        <img src="assets/Paul.jpeg" alt="Peter Kimani" class="player-photo">
+        <div class="player-photo-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Peter Kimani</span></div>
+        <div class="p-pos-badge">CM</div>
+      </div>
+      <div class="player-info">
+        <div class="p-name">Peter Kimani</div>
+        <div class="p-pos-label">Winger</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+<hr class="section-divider">
+
+<section id="legends">
+  <div class="section-label reveal">Club Heritage</div>
+  <div class="section-title reveal">Legend Players</div>
+  <p class="legends-intro reveal">The players who defined Karura Community FC — whose dedication, grit, and talent laid the foundation for everything the club stands for today.</p>
+  <div class="legends-grid">
+    <div class="legend-card reveal">
+      <div class="legend-img-wrap">
+        <img src="assets/legend1.jpeg" alt="Martin Kibe" class="legend-img">
+        <div class="legend-img-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Legend Photo</span></div>
+        <div class="legend-badge">Legend</div>
+      </div>
+      <div class="legend-info">
+        <div class="legend-name">Martin Kibe</div>
+        <div class="legend-years">2019 – 2023</div>
+        <div class="legend-pos">Striker #9</div>
+        <div class="legend-stat-row">
+          <div class="legend-stat"><div class="legend-stat-val">142</div><div class="legend-stat-lbl">Apps</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">67</div><div class="legend-stat-lbl">Goals</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">51</div><div class="legend-stat-lbl">Assists</div></div>
+        </div>
+        <p class="legend-bio">Ruthless Striker and the heartbeat of Karura for 14 seasons.</p>
+      </div>
+    </div>
+    <div class="legend-card reveal">
+      <div class="legend-img-wrap">
+        <img src="assets/legend2.jpeg" alt="Edward Kariuki" class="legend-img">
+        <div class="legend-img-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Legend Photo</span></div>
+        <div class="legend-badge">Legend</div>
+      </div>
+      <div class="legend-info">
+        <div class="legend-name">Edward Kariuki</div>
+        <div class="legend-years">2015 – 2020</div>
+        <div class="legend-pos">Centre Back</div>
+        <div class="legend-stat-row">
+          <div class="legend-stat"><div class="legend-stat-val">118</div><div class="legend-stat-lbl">Apps</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">12</div><div class="legend-stat-lbl">Goals</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">93</div><div class="legend-stat-lbl">Clean tackles</div></div>
+        </div>
+        <p class="legend-bio">Known for commanding leadership both on the pitch and in the dressing room.</p>
+      </div>
+    </div>
+    <div class="legend-card reveal">
+      <div class="legend-img-wrap">
+        <img src="assets/legend3.jpeg" alt="James Murichu" class="legend-img">
+        <div class="legend-img-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Legend Photo</span></div>
+        <div class="legend-badge">Legend</div>
+      </div>
+      <div class="legend-info">
+        <div class="legend-name">James Murichu Gichinga</div>
+        <div class="legend-years">2007 – 2020</div>
+        <div class="legend-pos">Rightback</div>
+        <div class="legend-stat-row">
+          <div class="legend-stat"><div class="legend-stat-val">134</div><div class="legend-stat-lbl">Apps</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">188</div><div class="legend-stat-lbl">Clean Tackles</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">33</div><div class="legend-stat-lbl">Header Goals</div></div>
+        </div>
+        <p class="legend-bio">Most decorated legend, football-wise. Currently a FKF referee officiating at KPL.</p>
+      </div>
+    </div>
+    <div class="legend-card reveal">
+      <div class="legend-img-wrap">
+        <img src="assets/LegendP (1).jpg" alt="Peter P" class="legend-img">
+        <div class="legend-img-fallback"><span class="photo-fallback-icon">📷</span><span class="photo-fallback-name">Legend Photo</span></div>
+        <div class="legend-badge">Legend</div>
+      </div>
+      <div class="legend-info">
+        <div class="legend-name">Peter P</div>
+        <div class="legend-years">2020 – 2023</div>
+        <div class="legend-pos">Centre Back</div>
+        <div class="legend-stat-row">
+          <div class="legend-stat"><div class="legend-stat-val">97</div><div class="legend-stat-lbl">Apps</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">8</div><div class="legend-stat-lbl">Goals</div></div>
+          <div class="legend-stat"><div class="legend-stat-val">93</div><div class="legend-stat-lbl">Clean tackles</div></div>
+        </div>
+        <p class="legend-bio">Known for commanding leadership both on the pitch and in the dressing room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<div class="bg-strip">
+<section id="coaching">
+  <div class="section-label reveal">Technical Team</div>
+  <div class="section-title reveal">Technical Staff</div>
+  <div class="staff-grid staff-grid--five">
+    <div class="staff-card reveal">
+      <div class="staff-photo-wrap"><img src="assets/Vincent.jpeg" alt="Vincent Otieno" class="staff-photo"><div class="staff-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="staff-body"><div class="staff-name">Vincent Otieno</div><div class="staff-role">Head Coach</div><div class="staff-bio">Former FKF Division 1 player with 15 years coaching experience. Joined KCFC in 2019.</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <div class="staff-photo-wrap"><img src="assets/director_sports.jpeg" alt="Peter Gachanja" class="staff-photo"><div class="staff-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="staff-body"><div class="staff-name">Peter Gachanja</div><div class="staff-role">Director of Football</div><div class="staff-bio">Tactical specialist focusing on set-pieces and defensive structure.</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <div class="staff-photo-wrap"><img src="assets/jackson.jpg" alt="Jackson Wambugu" class="staff-photo"><div class="staff-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="staff-body"><div class="staff-name">Jackson Wambugu</div><div class="staff-role">Team Manager</div><div class="staff-bio">Former Kenya national team goalkeeper.</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <div class="staff-photo-wrap"><img src="assets/physio.jpeg" alt="Peter Maina" class="staff-photo"><div class="staff-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="staff-body"><div class="staff-name">Peter Maina</div><div class="staff-role">Team Physiotherapist</div><div class="staff-bio">Responsible for player fitness and physique.</div></div>
+    </div>
+    <div class="staff-card reveal">
+      <div class="staff-photo-wrap"><img src="assets/doctor.jpeg" alt="Brian Waweru" class="staff-photo"><div class="staff-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="staff-body"><div class="staff-name">Brian Waweru</div><div class="staff-role">Team Doctor</div><div class="staff-bio">Responsible for nursing player injuries during matches.</div></div>
+    </div>
+  </div>
+</section>
+</div>
+<hr class="section-divider">
+
+<section id="directors">
+  <div class="section-label reveal">Leadership</div>
+  <div class="section-title reveal">Board of Directors</div>
+  <div class="directors-grid directors-grid--four">
+    <div class="dir-card reveal">
+      <div class="dir-photo-wrap"><img src="assets/ceo.jpeg" alt="Benson Kamau" class="dir-photo"><div class="dir-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="dir-name">Benson Kamau</div><div class="dir-role">Chief Executive Officer</div>
+    </div>
+    <div class="dir-card reveal">
+      <div class="dir-photo-wrap"><img src="assets/coachV.jpg" alt="Coach V" class="dir-photo"><div class="dir-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="dir-name">Coach V</div><div class="dir-role">Chair</div>
+    </div>
+    <div class="dir-card reveal">
+      <div class="dir-photo-wrap"><img src="assets/director2.jpeg" alt="Peter Kungu" class="dir-photo"><div class="dir-photo-fallback"><span class="photo-fallback-icon">📷</span></div></div>
+      <div class="dir-name">Peter Kungu</div><div class="dir-role">Treasurer</div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+
+<div class="bg-strip">
+<section id="history">
+  <div class="section-label reveal">Our Roots</div>
+  <div class="section-title reveal">A Brief History</div>
+  <div class="history-wrap">
+    <div class="reveal">
+      <div class="history-text">
+        <p><strong>Karura Community Football Club</strong> was founded in 2004.</p>
+        <p>The three stars on our crest represent the levels we have climbed to reach our current position.</p>
+        <p>We currently compete in the <strong>FKF Central Region League</strong>.</p>
+        <p>We are a Christ-like football club engaging the world through sports.</p>
+        <p>Our slogan, <strong>"a ball and a life"</strong>, means we don't just play football — we offer opportunities to young people through mentorship, education, and guidance for life after the field.</p>
+      </div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-dot">★</div><div><div class="tl-year">2004</div><div class="tl-text">Club founded by community volunteers in Muchatha, Kiambu</div></div></div>
+      <div class="tl-item"><div class="tl-dot">★</div><div><div class="tl-year">2005</div><div class="tl-text">Official FKF registration in Sub-County League</div></div></div>
+      <div class="tl-item"><div class="tl-dot">★</div><div><div class="tl-year">2010</div><div class="tl-text">Promoted to County League</div></div></div>
+      <div class="tl-item"><div class="tl-dot">★</div><div><div class="tl-year">2026</div><div class="tl-text">Current season — targeting top 3 finish</div></div></div>
+    </div>
+  </div>
+</section>
+</div>
+<hr class="section-divider">
+
+<div class="sponsors-section">
+<section id="sponsors">
+  <div class="section-label reveal">Partners &amp; Supporters</div>
+  <div class="section-title reveal">Our Sponsors</div>
+  <div class="sponsors-three reveal">
+    <div class="sponsor-card sponsor-card--title">
+      <div class="sponsor-card-tier">Title Sponsor</div>
+      <div class="sponsor-card-logo">
+        <img src="assets/sponsor1.jpeg" alt="KCS Sacco" class="sponsor-logo-img">
+        <div class="sponsor-logo-fallback">KCS SACCO</div>
+      </div>
+    </div>
+    <div class="sponsor-card sponsor-card--gold">
+      <div class="sponsor-card-tier">Gold Sponsor</div>
+      <div class="sponsor-card-logo">
+        <img src="assets/sponsor2.jpeg" alt="Aboyami Velonos" class="sponsor-logo-img">
+        <div class="sponsor-logo-fallback">ABOYOMI VELONOS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="donate-section reveal">
+    <div class="donate-section-inner">
+      <div class="donate-left">
+        <div class="donate-title">Support <span>Karura FC</span><br>via M-Pesa</div>
+        <p class="donate-sub">Every shilling you send goes directly toward jerseys, equipment, transport, and keeping our youth on the pitch. You don't need to be a sponsor — even a small contribution makes a real difference.</p>
+        <ul class="donate-love-list">
+          <li><span class="dlv">✓</span> Helps us buy match kits &amp; training gear</li>
+          <li><span class="dlv">✓</span> Covers transport to away matches</li>
+          <li><span class="dlv">✓</span> Supports our Youth Academy programmes</li>
+          <li><span class="dlv">✓</span> Keeps football free for young players in the community</li>
+        </ul>
+        <div class="donate-thank">Your support is seen, felt, and deeply appreciated — <strong>asante sana!</strong> 🙏</div>
+      </div>
+      <div class="donate-right">
+        <div class="paybill-card">
+          <div class="paybill-label">M-Pesa Paybill Number</div>
+          <div class="paybill-number">829291</div>
+          <div class="paybill-divider"></div>
+          <div class="paybill-account-label">Account Number</div>
+          <div class="paybill-account-val">KCSGRP00019</div>
+          <div class="paybill-name">Karura Community Football Club</div>
+        </div>
+        <div class="paybill-steps">
+          <div class="paybill-steps-title">How to pay</div>
+          <div class="paybill-step"><div class="paybill-step-num">1</div>Go to M-Pesa → <strong>Lipa na M-Pesa → Paybill</strong></div>
+          <div class="paybill-step"><div class="paybill-step-num">2</div>Business No: <strong>829291</strong></div>
+          <div class="paybill-step"><div class="paybill-step-num">3</div>Account No: <strong>KCSGRP00019</strong></div>
+          <div class="paybill-step"><div class="paybill-step-num">4</div>Enter any amount &amp; confirm with your PIN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sponsor-cta reveal">
+    <div class="sponsor-cta-title">Become a Sponsor</div>
+    <p class="sponsor-cta-text">Join our growing family of sponsors and put your brand in front of thousands of passionate football fans across Central Kenya. Partner with a club that's building more than just a team.</p>
+
+    <div class="sponsor-cta-grid">
+      <div class="sponsor-cta-box why">
+        <div class="sponsor-cta-box-icon">🤝</div>
+        <div class="sponsor-cta-box-title">Why Partner With Us?</div>
+        <div class="sponsor-cta-items">
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">📱</div>
+            <div><strong>Massive Online Visibility</strong> — Reach thousands weekly through engaging, authentic sports content</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">🏘️</div>
+            <div><strong>Community Connection</strong> — Direct engagement with grassroots, schools and local youth</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">❤️</div>
+            <div><strong>Brand Loyalty</strong> — Fans actively support brands that support their club</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">🌱</div>
+            <div><strong>CSR Alignment</strong> — Positive association with youth empowerment, education &amp; community development</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">🎬</div>
+            <div><strong>Content Creation</strong> — Sponsors gain access to fresh, relatable and shareable digital content</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sponsor-cta-box benefits">
+        <div class="sponsor-cta-box-icon">🏆</div>
+        <div class="sponsor-cta-box-title">Sponsor Benefits</div>
+        <div class="sponsor-cta-items">
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">👕</div>
+            <div><strong>Jersey &amp; Branding</strong> — Logo visibility on kit, digital media, and event branding</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">📣</div>
+            <div><strong>Audience Exposure</strong> — Reach a vibrant, youthful and growing audience</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">🎯</div>
+            <div><strong>Co-branded Campaigns</strong> — Joint activations, posts, and online features</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">🎁</div>
+            <div><strong>Fan Interaction</strong> — Giveaways, product integration, direct community reach</div>
+          </div>
+          <div class="sponsor-cta-item">
+            <div class="sponsor-cta-item-icon">💼</div>
+            <div><strong>Tax Benefit</strong> — Qualify as a CSR investment with documented returns</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sponsor-cta-action">
+      <button class="btn-primary" onclick="openSponsorModal()">Get in Touch</button>
+      <span class="sponsor-cta-note">Or email us directly at <a href="mailto:sponsors@karurafc.co.ke">sponsors@karurafc.co.ke</a></span>
+    </div>
+  </div>
+</section>
+</div>
+<hr class="section-divider">
+
+<section id="contact">
+  <div class="section-label reveal">Get In Touch</div>
+  <div class="section-title reveal">Contact Us</div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="contact-info-item">
+        <div class="ci-icon">📍</div>
+        <div><div class="ci-label">Ground Address</div><div class="ci-val">Muchatha Stadium, off Banana-Raini Rd, Muchatha, Kiambu County</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">📞</div>
+        <div><div class="ci-label">Phone</div><div class="ci-val">+254 723 536 755</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">✉️</div>
+        <div><div class="ci-label">Email</div><div class="ci-val">info@karurafc.co.ke</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-icon">🕒</div>
+        <div><div class="ci-label">Training Hours</div><div class="ci-val">Tue, Wed, Thur, Fri: 3:30 – 6:00pm<br>Sat: 4:00 – 6:00pm (Match Preparation)</div></div>
+      </div>
+      <div class="social-block">
+        <div class="section-label">Follow Us</div>
+        <div class="social-row">
+          <a class="social-btn" href="https://x.com/FcKaruracomm">𝕏 @KaruraFC</a>
+          <a class="social-btn" href="https://www.facebook.com/groups/3599941626931887/">f /KaruraCommunityFC</a>
+          <a class="social-btn" href="#">▶ YouTube</a>
+          <a class="social-btn" href="#">📷 Instagram</a>
+          <a class="social-btn" href="https://vm.tiktok.com/ZS9LdTR7EAQGY-6TmCL/">🎵 TikTok</a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Email Address">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Your message..."></textarea>
+        <button class="btn-primary" onclick="submitForm()">Send Message</button>
+      </div>
+    </div>
+  </div>
+  <div class="map-embed reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.0!2d36.7755384!3d-1.1903548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f22d6be9ee9d5%3A0x5432bfde1260ba6f!2sMuchatha%20Stadium%2C%20Kiambu%20County!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske" title="Muchatha Stadium" allowfullscreen></iframe>
+  </div>
+</section>
+<hr class="section-divider">
+
+<div class="bg-strip">
+<section id="faq">
+  <div class="section-label reveal">Frequently Asked</div>
+  <div class="section-title reveal">FAQ</div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How can I join Karura Community FC?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Interested players can attend our open training sessions held every Monday, Wednesday, and Friday morning at Muchatha Ground. Bring your boots and water. Our coaching staff will assess you during training and you'll receive feedback within a week. Contact us at info@karurafc.co.ke for more details.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you have a youth academy?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Yes! The Karura FC Youth Academy was established in 2017 and caters to players aged 8–18 years. We offer structured coaching programmes across U10, U13, U16, and U18 age groups. The academy trains on Saturday mornings at our ground. Enrolment is open at the start of each season.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Where do you play your home matches?<span class="faq-icon">+</span></button>
+      <div class="faq-a">All Karura Community FC home matches are played at Muchatha Stadium, off Banana-Raini Rd, Muchatha, Kiambu County. Admission for league matches is free to the public. Check our social media for match schedules.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How can I become a sponsor or partner?<span class="faq-icon">+</span></button>
+      <div class="faq-a">We offer a range of sponsorship packages to suit all budgets — from jersey branding to ground signage and digital promotion. Fill in the sponsorship form or email our marketing team at sponsors@karurafc.co.ke or call +254 712 345 678. We'd love to have you on board!</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I volunteer with the club?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Absolutely. KCFC relies heavily on the generosity of community volunteers in areas such as matchday operations, kit management, social media, photography, coaching assistance, and youth mentorship. If you're interested, reach out via email and tell us how you'd like to get involved.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which league does Karura FC currently play in?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Karura Community FC currently competes in the FKF Central Regional League — one of the key regional competitions under the Football Kenya Federation (FKF) structure. We earned promotion to this level in the 2020/21 season.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is there a women's team?<span class="faq-icon">+</span></button>
+      <div class="faq-a">No, currently we do not have a women's team. We hope to establish one in the future as the club continues to grow.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="assets/logo.png" alt="Karura FC Crest" class="footer-logo-img">
+        <div class="footer-logo-fallback"><div class="footer-brand-name"><span>KARURA</span> COMMUNITY FC</div></div>
+      </div>
+      <div class="footer-desc">Born from the community of Kiambaa, Kiambu. Playing with heart, growing with purpose. Representing Muchatha and the spirit of Kenyan grassroots football since 2004.</div>
+      <div class="footer-socials">
+        <a class="social-btn footer-social-btn" href="https://x.com/FcKaruracomm">𝕏 Twitter</a>
+        <a class="social-btn footer-social-btn" href="https://www.facebook.com/groups/3599941626931887/">f Facebook</a>
+        <a class="social-btn footer-social-btn" href="https://vm.tiktok.com/ZS9LdTR7EAQGY-6TmCL/">🎵 TikTok</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Club</h4>
+      <ul>
+        <li><a href="#history">History</a></li>
+        <li><a href="#directors">Board of Directors</a></li>
+        <li><a href="#coaching">Coaching Staff</a></li>
+        <li><a href="#sponsors">Sponsors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Football</h4>
+      <ul>
+        <li><a href="#players">First Team</a></li>
+        <li><a href="#legends">Club Legends</a></li>
+        <li><a href="#league">League Table</a></li>
+        <li><a href="#players">Youth Academy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="mailto:info@karurafc.co.ke">info@karurafc.co.ke</a></li>
+        <li><a href="tel:+254712345678">+254 712 345 678</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Karura Community Football Club. All rights reserved.</span>
+    <span>Registered with FKF | Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<!-- SPONSOR MODAL -->
+<div class="modal-overlay" id="sponsorModal" onclick="closeSponsorModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeSponsorModal()" aria-label="Close modal">&#10005;</button>
+    <div class="modal-header">
+      <div class="modal-title">Become a Sponsor</div>
+      <div class="modal-sub">Partner with Karura Community FC and grow your brand across Central Kenya</div>
+    </div>
+    <form class="modal-form" onsubmit="submitSponsorForm(event)">
+      <div class="modal-field-row">
+        <div class="modal-field">
+          <label class="modal-label">Full Name *</label>
+          <input type="text" class="modal-input" id="sp-name" placeholder="Your full name" required>
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Organisation *</label>
+          <input type="text" class="modal-input" id="sp-org" placeholder="Company / business name" required>
+        </div>
+      </div>
+      <div class="modal-field-row">
+        <div class="modal-field">
+          <label class="modal-label">Email Address *</label>
+          <input type="email" class="modal-input" id="sp-email" placeholder="your@email.com" required>
+        </div>
+        <div class="modal-field">
+          <label class="modal-label">Phone Number</label>
+          <input type="tel" class="modal-input" id="sp-phone" placeholder="+254 7XX XXX XXX">
+        </div>
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Sponsorship Level</label>
+        <select class="modal-input modal-select" id="sp-level" title="Sponsorship Level" aria-label="Sponsorship Level">
+          <option value="">-- Select a package --</option>
+          <option value="Platinum">Platinum — Title Sponsor: Premier visibility &amp; branding</option>
+          <option value="gold">Gold Sponsor — Kit &amp; ground signage</option>
+          <option value="Silver">Silver Sponsor — Digital Media partner, featured posts, local activation events</option>
+          <option value="Community">Community Sponsor — Contribution towards community programs, recognition online</option>
+          <option value="Gaming">Gaming Sponsor — Training equipment provider, exclusive training content</option>
+          <option value="Health">Health Sponsor — Cover player insurance</option>
+          <option value="Hydration">Hydration Sponsor — Branding on water bottles, energy drinks</option>
+          <option value="Hospitality">Hospitality Sponsor — Hospitality provider for trips, travel digital content</option>
+          <option value="custom">Custom Package — Let's talk</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Message</label>
+        <textarea class="modal-input modal-textarea" id="sp-message" placeholder="Tell us about your business and how you'd like to partner with us..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="closeSponsorModal()">Cancel</button>
+        <button type="submit" class="btn-primary">Send Enquiry</button>
+      </div>
+    </form>
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon">✅</div>
+      <div class="modal-success-title">Enquiry Sent!</div>
+      <div class="modal-success-msg">Thank you for your interest in sponsoring Karura Community FC. Our team will be in touch within 2 business days.</div>
+      <button class="btn-primary" onclick="closeSponsorModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
